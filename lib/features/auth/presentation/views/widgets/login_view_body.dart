@@ -3,12 +3,12 @@ import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_images.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:e_commerce_app/core/widgets/custom_text_field.dart';
-import 'package:e_commerce_app/features/auth/widgets/dont_have_account.dart';
-import 'package:e_commerce_app/features/auth/widgets/or_divider.dart';
-import 'package:e_commerce_app/features/auth/widgets/social_login_button.dart';
+import 'package:e_commerce_app/features/auth/presentation/views/widgets/dont_have_account.dart';
+import 'package:e_commerce_app/features/auth/presentation/views/widgets/or_divider.dart';
+import 'package:e_commerce_app/features/auth/presentation/views/widgets/social_login_button.dart';
 import 'package:flutter/material.dart';
 
-import '../../../core/widgets/custom_button.dart';
+import '../../../../../core/widgets/custom_button.dart';
 
 class LoginViewBody extends StatelessWidget {
   const LoginViewBody({super.key});
@@ -82,6 +82,9 @@ class LoginViewBody extends StatelessWidget {
               image: Assets.imagesGoogle,
               label: 'تسجيل بواسطه جوجل',
               onPressed: () {},
+            ),
+            SizedBox(
+              height: 30,
             ),
           ],
         ),

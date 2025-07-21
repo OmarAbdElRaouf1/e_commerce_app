@@ -4,12 +4,10 @@ import 'package:flutter/material.dart';
 AppBar CustomAppBar({
   required BuildContext context,
   required String title,
+  bool? automaticallyImplyLeading,
 }) {
   return AppBar(
-    leading: IconButton(
-      icon: const Icon(Icons.arrow_back_ios_new),
-      onPressed: () => Navigator.pop(context),
-    ),
+    automaticallyImplyLeading: automaticallyImplyLeading ?? true,
     centerTitle: true,
     title: Text(
       title,
