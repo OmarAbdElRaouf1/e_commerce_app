@@ -1,9 +1,9 @@
-import 'package:e_commerce_app/core/utils/app_text_styles.dart' show AppTextStyles;
+import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/app_colors.dart';
-import '../register_view.dart';
+import '../signup_view.dart';
 
 class DontHaveAccount extends StatelessWidget {
   const DontHaveAccount({super.key});
@@ -26,7 +26,7 @@ class DontHaveAccount extends StatelessWidget {
             ),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                Navigator.pushNamed(context, RegisterView.routeName);
+                Navigator.pushNamed(context, SignupView.routeName);
               },
           ),
         ],

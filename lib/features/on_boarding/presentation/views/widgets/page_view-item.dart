@@ -1,7 +1,7 @@
 import 'package:e_commerce_app/constants.dart';
 import 'package:e_commerce_app/core/services/shared_preferences_singleton.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
-import 'package:e_commerce_app/features/auth/presentation/views/login_view.dart';
+import 'package:e_commerce_app/features/auth/presentation/views/signin_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -40,7 +40,7 @@ class PageViewItem extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     Prefs.setBool(kIsOnBoardingViewSeen, true);
-                    Navigator.of(context).pushReplacementNamed(LoginView.routeName);
+                    Navigator.of(context).pushReplacementNamed(SigninView.routeName);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
