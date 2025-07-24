@@ -3,6 +3,7 @@ import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_images.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:e_commerce_app/core/widgets/custom_text_field.dart';
+import 'package:e_commerce_app/core/widgets/password_field.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/widgets/dont_have_account.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/widgets/or_divider.dart';
 import 'package:e_commerce_app/features/auth/presentation/views/widgets/social_login_button.dart';
@@ -30,11 +31,7 @@ class LoginViewBody extends StatelessWidget {
             SizedBox(
               height: 16,
             ),
-            CustomTextFormField(
-              Icon: Icon(Icons.remove_red_eye, color: Colors.grey),
-              hintText: 'كلمة المرور',
-              textInputType: TextInputType.visiblePassword,
-            ),
+            PasswordField(),
             SizedBox(
               height: 16,
             ),

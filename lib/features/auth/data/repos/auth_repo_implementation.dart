@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/errors/exceptions.dart';
 
@@ -22,7 +24,11 @@ class AuthRepoImplementation implements AuthRepo {
       );
       return Right(UserModel.fromFirebaseUser(user));
     } on CustomException catch (e) {
+      log('Error in createUserWithEmailAndPassword: ${e.message}');
       return Left(ServerFailure(e.message));
+    } catch (e) {
+      log('Error in createUserWithEmailAndPassword: ${e.toString()}');
+      return Left(ServerFailure('An unexpected error occurred'));
     }
   }
 }

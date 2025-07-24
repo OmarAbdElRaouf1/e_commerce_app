@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app/core/errors/exceptions.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -11,15 +13,21 @@ class FirebaseAuthService {
       );
       return credential.user!;
     } on FirebaseAuthException catch (e) {
+      log('Exception in createUserWithEmailAndPassword: ${e.code} - ${e.message},and code = ${e.code}');
       if (e.code == 'weak-password') {
-        throw CustomException('The password provided is too weak.');
+        throw CustomException('الباسورد ضعيف جدا.');
+      } else if (e.code == 'network-request-failed') {
+        throw CustomException('لا يوجد اتصال بالانترنت.');
       } else if (e.code == 'email-already-in-use') {
-        throw CustomException('The account already exists for that email.');
+        throw CustomException('هذا البريد الالكتروني مستخدم من قبل.');
+      } else if (e.code == 'invalid-email') {
+        throw CustomException('هذا البريد الالكتروني غير صالح.');
       } else {
-        throw CustomException(" The email address is not valid.");
+        throw CustomException("حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقاً.");
       }
     } catch (e) {
-      throw CustomException("An error occurred , please try again later.");
+      log('Exception in createUserWithEmailAndPassword: ${e.toString()}');
+      throw CustomException("حدث خطأ ما، يرجى المحاولة مرة أخرى لاحقاً.");
     }
   }
 }
