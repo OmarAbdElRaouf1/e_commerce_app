@@ -19,6 +19,7 @@ class SignupViewBlocConsumer extends StatelessWidget {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('تم إنشاء الحساب بنجاح')),
           );
+          Navigator.of(context).pop(); // Navigate back or to another screen
         }
         if (state is SignupFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
