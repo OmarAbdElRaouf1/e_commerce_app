@@ -6,7 +6,14 @@ import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class FirebaseAuthService {
-  Future<User> createUserWithEmailAndPassword({required String email, required String password}) async {
+  Future deleteUser() async {
+    await FirebaseAuth.instance.currentUser!.delete();
+  }
+
+  Future<User> createUserWithEmailAndPassword({
+    required String email,
+    required String password,
+  }) async {
     // Implementation for creating a user with email and password using Firebase
     try {
       final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(

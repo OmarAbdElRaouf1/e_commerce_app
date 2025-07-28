@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:e_commerce_app/features/auth/domain/entities/user_entity.dart' show UserEntity;
-import 'package:e_commerce_app/features/auth/domain/repos/auth_repo.dart' show AuthRepo;
+import 'package:e_commerce_app/features/auth/domain/entities/user_entity.dart';
+import 'package:e_commerce_app/features/auth/domain/repos/auth_repo.dart';
 
 part 'signin_state.dart';
 

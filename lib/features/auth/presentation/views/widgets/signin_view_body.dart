@@ -108,11 +108,6 @@ class _SignInViewBodyState extends State<SignInViewBody> {
               SizedBox(
                 height: 16,
               ),
-              SocialLoginButton(
-                image: Assets.imagesX,
-                label: 'تسجيل بواسطه تيوتر',
-                onPressed: () {},
-              ),
               SizedBox(
                 height: 16,
               ),
