@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../../../../home/presentation/views/home_view.dart';
 import 'signin_view_body.dart';
 
 class SigninViewBodyBlocConsumer extends StatelessWidget {
@@ -17,6 +18,9 @@ class SigninViewBodyBlocConsumer extends StatelessWidget {
         if (state is SigninSuccess) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('تم تسجيل الدخول بنجاح')),
+          );
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomeView()),
           );
           // Navigate back or to another screen
         }

@@ -2,16 +2,27 @@ import 'package:e_commerce_app/core/utils/app_text_styles.dart';
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  const CustomTextFormField({super.key, required this.hintText, required this.textInputType, this.suffixIcon, this.onSaved, this.obscureText = false});
+  const CustomTextFormField({
+    super.key,
+    required this.hintText,
+    required this.textInputType,
+    this.suffixIcon,
+    this.onSaved,
+    this.obscureText = false,
+    this.controller, // ✅ خزّنه هنا
+  });
+
   final String hintText;
   final TextInputType textInputType;
   final Widget? suffixIcon;
   final void Function(String?)? onSaved;
-  final bool obscureText; // Default value for password fields
+  final bool obscureText;
+  final TextEditingController? controller; // ✅ إضافة المتغير هنا
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller, // ✅ اربطه هنا
       obscureText: obscureText,
       onSaved: onSaved,
       validator: (value) => value!.isEmpty ? 'هذا الحقل مطلوب' : null,

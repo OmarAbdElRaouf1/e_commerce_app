@@ -14,6 +14,10 @@ class Assets {
   /// assets/images/Check.svg
   static const String imagesCheck = "assets/images/Check.svg";
 
+  /// Assets for imagesElements
+  /// assets/images/elements.svg
+  static const String imagesElements = "assets/images/elements.svg";
+
   /// Assets for imagesFacebook
   /// assets/images/Facebook.svg
   static const String imagesFacebook = "assets/images/Facebook.svg";
@@ -22,13 +26,25 @@ class Assets {
   /// assets/images/fruitLogo.svg
   static const String imagesFruitLogo = "assets/images/fruitLogo.svg";
 
+  /// Assets for imagesFruits
+  /// assets/images/fruits.svg
+  static const String imagesFruits = "assets/images/fruits.svg";
+
   /// Assets for imagesGoogle
   /// assets/images/Google.svg
   static const String imagesGoogle = "assets/images/Google.svg";
 
+  /// Assets for imagesHome
+  /// assets/images/home.svg
+  static const String imagesHome = "assets/images/home.svg";
+
   /// Assets for imagesLogo
   /// assets/images/logo.png
   static const String imagesLogo = "assets/images/logo.png";
+
+  /// Assets for imagesNotification
+  /// assets/images/notification.svg
+  static const String imagesNotification = "assets/images/notification.svg";
 
   /// Assets for imagesOnboarding1
   /// assets/images/onboarding1.png
@@ -62,6 +78,22 @@ class Assets {
   /// assets/images/plant.svg
   static const String imagesPlant = "assets/images/plant.svg";
 
+  /// Assets for imagesProfileImage
+  /// assets/images/profileImage.png
+  static const String imagesProfileImage = "assets/images/profileImage.png";
+
+  /// Assets for imagesSearchNormal
+  /// assets/images/search_normal.png
+  static const String imagesSearchNormal = "assets/images/search_normal.png";
+
+  /// Assets for imagesShape
+  /// assets/images/shape.svg
+  static const String imagesShape = "assets/images/shape.svg";
+
+  /// Assets for imagesShoppingCart
+  /// assets/images/shopping-cart.svg
+  static const String imagesShoppingCart = "assets/images/shopping-cart.svg";
+
   /// Assets for imagesSplashButton
   /// assets/images/splashButton.svg
   static const String imagesSplashButton = "assets/images/splashButton.svg";
@@ -69,6 +101,14 @@ class Assets {
   /// Assets for imagesSplashViewImage
   /// assets/images/splash_view_image.png
   static const String imagesSplashViewImage = "assets/images/splash_view_image.png";
+
+  /// Assets for imagesTest
+  /// assets/images/test.png
+  static const String imagesTest = "assets/images/test.png";
+
+  /// Assets for imagesUser
+  /// assets/images/user.svg
+  static const String imagesUser = "assets/images/user.svg";
 
   /// Assets for imagesX
   /// assets/images/X.svg

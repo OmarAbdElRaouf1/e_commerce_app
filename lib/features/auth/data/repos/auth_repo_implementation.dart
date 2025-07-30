@@ -2,12 +2,10 @@ import 'dart:developer';
 
 import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/core/errors/exceptions.dart';
-
 import 'package:e_commerce_app/core/errors/failures.dart';
 import 'package:e_commerce_app/core/services/database_service.dart';
 import 'package:e_commerce_app/core/services/firebase_auth_service.dart';
 import 'package:e_commerce_app/features/auth/data/models/user_model.dart';
-
 import 'package:e_commerce_app/features/auth/domain/entities/user_entity.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -19,11 +17,12 @@ class AuthRepoImplementation implements AuthRepo {
   final FirebaseAuthService firebaseAuthService;
 
   AuthRepoImplementation({required this.firebaseAuthService, required this.databaseService});
+
   @override
   Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(String email, String password, String name) async {
     User? user;
     try {
-      var user = await firebaseAuthService.createUserWithEmailAndPassword(
+      user = await firebaseAuthService.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -69,10 +68,10 @@ class AuthRepoImplementation implements AuthRepo {
     User? user;
     try {
       user = await firebaseAuthService.signInWithGoogle();
-      var userEntity = UserModel.fromFirebaseUser(user);
+      UserEntity userEntity = UserModel.fromFirebaseUser(user);
       var isUserExist = await databaseService.isUserExist(path: BackendEndpoints.isUserExist, docId: user.uid);
       if (isUserExist) {
-        await getData(userId: user.uid);
+        userEntity = await getData(userId: user.uid);
       } else {
         await addUserData(user: userEntity);
       }
@@ -90,7 +89,7 @@ class AuthRepoImplementation implements AuthRepo {
     try {
       user = await firebaseAuthService.signInWithFacebook();
       var userEntity = UserModel.fromFirebaseUser(user);
-      addUserData(user: userEntity);
+      await addUserData(user: userEntity);
       return Right(userEntity);
     } catch (e) {
       await deleteuser(user);

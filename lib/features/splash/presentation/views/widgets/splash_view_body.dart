@@ -101,9 +101,17 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
     Future.delayed(const Duration(seconds: 2), () {
       if (isOnBoardingViewSeen) {
-        Navigator.pushReplacementNamed(context, SigninView.routeName);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          SigninView.routeName,
+          (Route<dynamic> route) => false,
+        );
       } else {
-        Navigator.pushReplacementNamed(context, OnBoardingView.routeName);
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          OnBoardingView.routeName,
+          (Route<dynamic> route) => false,
+        );
       }
     });
   }
