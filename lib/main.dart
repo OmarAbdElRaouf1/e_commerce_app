@@ -2,6 +2,8 @@ import 'package:e_commerce_app/core/helper%20functions/on_generate_routes.dart';
 import 'package:e_commerce_app/core/services/custom_bloc_observer.dart';
 import 'package:e_commerce_app/core/services/shared_preferences_singleton.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
+import 'package:e_commerce_app/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
+import 'package:e_commerce_app/features/home/presentation/cubits/cart_item_cubit/cart_item_cubit.dart';
 import 'package:e_commerce_app/features/splash/presentation/views/splash_view.dart';
 import 'package:e_commerce_app/firebase_options.dart';
 import 'package:e_commerce_app/generated/l10n.dart';
@@ -10,20 +12,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
+import 'core/cubits/products_cubit/products_cubit.dart';
+import 'core/repos/products_repo/product_repo.dart';
 import 'core/services/getit_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
   Bloc.observer = CustomBlocObserver();
+
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  WidgetsFlutterBinding.ensureInitialized();
+
   await Prefs.init();
   setup();
-  runApp(
-    const FruitHub(),
-  );
+
+  runApp(MultiBlocProvider(
+    providers: [
+      BlocProvider(
+        create: (_) => CartCubit(),
+      ),
+      BlocProvider(
+        create: (_) => CartItemCubit(),
+      ),
+      BlocProvider(
+        create: (_) => ProductsCubit(getIt.get<ProductRepo>()),
+      ),
+    ],
+    child: const FruitHub(),
+  ));
 }
 
 class FruitHub extends StatelessWidget {
@@ -37,9 +55,7 @@ class FruitHub extends StatelessWidget {
   ) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(
-          seedColor: AppColors.primary,
-        ),
+        colorSchemeSeed: AppColors.primary,
         fontFamily: 'Cairo',
       ),
       localizationsDelegates: [
@@ -49,7 +65,9 @@ class FruitHub extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale('ar'),
+      locale: const Locale(
+        'ar',
+      ),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoutes,
       initialRoute: SplashView.routeName,

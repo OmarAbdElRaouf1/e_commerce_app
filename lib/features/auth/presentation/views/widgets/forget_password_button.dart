@@ -60,8 +60,8 @@ class ForgotPasswordviewBodyState extends State<ForgotPasswordviewBody> {
               ),
               SizedBox(height: 30),
               CustomTextFormField(
-                hintText: 'البريد الإلكتروني',
-                textInputType: TextInputType.emailAddress,
+                hintText: ' رقم الهاتف',
+                textInputType: TextInputType.phone,
                 controller: emailController,
               ),
               SizedBox(height: 40),

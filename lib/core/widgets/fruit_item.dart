@@ -1,12 +1,14 @@
+import 'package:e_commerce_app/core/entities/product_entity.dart';
 import 'package:e_commerce_app/core/utils/app_colors.dart';
 import 'package:e_commerce_app/core/utils/app_text_styles.dart';
+import 'package:e_commerce_app/features/home/presentation/cubits/cart_cubit/cart_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-
-import '../utils/app_images.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class FruitItem extends StatelessWidget {
-  const FruitItem({super.key});
+  const FruitItem({super.key, required this.productEntity});
+
+  final ProductEntity productEntity;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,7 @@ class FruitItem extends StatelessWidget {
       decoration: ShapeDecoration(
         color: const Color(0xFFF3F5F7),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(16),
         ),
       ),
       child: Stack(
@@ -31,14 +33,38 @@ class FruitItem extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: 20),
-                SvgPicture.asset(Assets.imagesFruitLogo, width: 80, height: 80),
                 const SizedBox(height: 20),
+
+                /// ✅ صورة مزينة
+                productEntity.imageUrl != null
+                    ? Container(
+                        height: MediaQuery.of(context).size.height * 0.14,
+                        width: MediaQuery.of(context).size.width * 0.33,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          boxShadow: [],
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.network(
+                            productEntity.imageUrl!,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      )
+                    : const SizedBox(
+                        height: 100,
+                        width: 100,
+                      ),
+
+                const SizedBox(height: 20),
+
+                /// معلومات المنتج
                 ListTile(
                   title: Text(
-                    'تفاح',
-                    style: TextStyle(
-                      fontSize: 16,
+                    productEntity.name,
+                    style: const TextStyle(
+                      fontSize: 14,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -46,28 +72,21 @@ class FruitItem extends StatelessWidget {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: '30 جنية ',
+                          text: '${productEntity.price} جنية ',
                           style: AppTextStyles.bold13.copyWith(
-                            color: AppColors.secondary /* Orange-500 */,
+                            color: AppColors.secondary,
                           ),
                         ),
                         TextSpan(
                           text: '/',
                           style: AppTextStyles.bold13.copyWith(
-                            color: AppColors.lightSecondary /* Orange-300 */,
-                          ),
-                        ),
-                        TextSpan(
-                          text: ' ',
-                          style: AppTextStyles.bold13.copyWith(
-                            color: AppColors.secondary /* Orange-500 */,
-                            height: 1.70,
+                            color: AppColors.lightSecondary,
                           ),
                         ),
                         TextSpan(
                           text: 'الكيلو',
                           style: AppTextStyles.bold13.copyWith(
-                            color: AppColors.lightSecondary /* Orange-300 */,
+                            color: AppColors.lightSecondary,
                             height: 1.70,
                           ),
                         ),
@@ -79,8 +98,10 @@ class FruitItem extends StatelessWidget {
                     backgroundColor: AppColors.primary,
                     child: IconButton(
                       iconSize: 20,
-                      onPressed: () {},
-                      icon: Icon(Icons.add, color: Colors.white),
+                      onPressed: () {
+                        context.read<CartCubit>().addProduct(productEntity);
+                      },
+                      icon: const Icon(Icons.add, color: Colors.white),
                     ),
                   ),
                 ),

@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/core/services/firebase_auth_service.dart';
+import 'package:e_commerce_app/features/home/presentation/views/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -5,6 +7,7 @@ import '../../../../../constants.dart';
 import '../../../../../core/services/shared_preferences_singleton.dart';
 import '../../../../../core/utils/app_images.dart';
 import '../../../../auth/presentation/views/signin_view.dart';
+
 import '../../../../on_boarding/presentation/views/on_boarding_view.dart';
 
 class SplashViewBody extends StatefulWidget {
@@ -101,11 +104,20 @@ class _SplashViewBodyState extends State<SplashViewBody> with SingleTickerProvid
     bool isOnBoardingViewSeen = Prefs.getBool(kIsOnBoardingViewSeen);
     Future.delayed(const Duration(seconds: 2), () {
       if (isOnBoardingViewSeen) {
-        Navigator.pushNamedAndRemoveUntil(
-          context,
-          SigninView.routeName,
-          (Route<dynamic> route) => false,
-        );
+        var isLoggedIn = isUserLoggedIn();
+        if (isLoggedIn) {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            MainView.routeName,
+            (Route<dynamic> route) => false,
+          );
+        } else {
+          Navigator.pushNamedAndRemoveUntil(
+            context,
+            SigninView.routeName,
+            (Route<dynamic> route) => false,
+          );
+        }
       } else {
         Navigator.pushNamedAndRemoveUntil(
           context,

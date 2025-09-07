@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/widgets/custom_appBar.dart';
+import 'package:e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce_app/features/auth/presentation/manager/cubits/signup_cubits/signup_cubit.dart' show SignupCubit;
 import 'package:e_commerce_app/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:flutter/material.dart';

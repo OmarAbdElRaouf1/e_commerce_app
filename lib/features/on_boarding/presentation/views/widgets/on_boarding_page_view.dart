@@ -10,6 +10,7 @@ class OnBoardingPageView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
+      scrollDirection: Axis.horizontal,
       controller: pageController,
       children: [
         PageViewItem(

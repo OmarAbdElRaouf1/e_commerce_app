@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/core/widgets/custom_appBar.dart';
+import 'package:e_commerce_app/core/widgets/custom_app_bar.dart';
 import 'package:e_commerce_app/features/auth/domain/repos/auth_repo.dart' show AuthRepo;
 import 'package:e_commerce_app/features/auth/presentation/manager/cubits/signin_cubits/cubit/signin_cubit.dart';
 import 'package:flutter/material.dart';

@@ -15,13 +15,13 @@ class FeaturedItemButton extends StatelessWidget {
         style: TextButton.styleFrom(
           backgroundColor: Colors.white,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(10),
           ),
           foregroundColor: Colors.white,
         ),
         onPressed: onPressed,
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 20),
           child: FittedBox(child: Text(' تسوق الان', style: AppTextStyles.bold16.copyWith(color: AppColors.primary))),
         ),
       ),

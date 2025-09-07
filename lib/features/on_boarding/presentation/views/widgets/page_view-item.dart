@@ -6,7 +6,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class PageViewItem extends StatelessWidget {
-  const PageViewItem({super.key, required this.image, required this.backgroundImage, required this.subtitle, required this.title, required this.isVisiable});
+  const PageViewItem(
+      {super.key,
+      required this.image,
+      required this.backgroundImage,
+      required this.subtitle,
+      required this.title,
+      required this.isVisiable});
   final String image, backgroundImage;
   final String subtitle;
   final Widget title;
@@ -40,11 +46,14 @@ class PageViewItem extends StatelessWidget {
                 child: GestureDetector(
                   onTap: () {
                     Prefs.setBool(kIsOnBoardingViewSeen, true);
-                    Navigator.of(context).pushReplacementNamed(SigninView.routeName);
+                    Navigator.of(context)
+                        .pushReplacementNamed(SigninView.routeName);
                   },
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
-                    child: Text('تخط', style: AppTextStyles.bold14.copyWith(color: Color(0xFF949D9E))),
+                    child: Text('تخط',
+                        style: AppTextStyles.bold16
+                            .copyWith(color: Color(0xFF949D9E))),
                   ),
                 ),
               ),
