@@ -17,18 +17,17 @@ class ProductRepoImpl implements ProductRepo {
     try {
       var rawData = await databaseService.getData(
         path: 'products',
-        query: {
-          'limit': 10,
-          'orderBy': 'sellingCount',
-          'descending': true
-        },
+        query: {'limit': 10, 'orderBy': 'sellingCount', 'descending': true},
       );
 
       if (rawData == null) {
         return Right(<ProductEntity>[]);
       }
 
-      final List<Map<String, dynamic>> result = (rawData as List).where((item) => item != null).map((item) => Map<String, dynamic>.from(item)).toList();
+      final List<Map<String, dynamic>> result = (rawData as List)
+          .where((item) => item != null)
+          .map((item) => Map<String, dynamic>.from(item))
+          .toList();
 
       List<ProductEntity> products = result
           .map((e) {
@@ -54,9 +53,12 @@ class ProductRepoImpl implements ProductRepo {
     try {
       var rawData = await databaseService.getData(path: 'products');
 
-      final List<Map<String, dynamic>> result = (rawData as List).map((item) => Map<String, dynamic>.from(item)).toList();
+      final List<Map<String, dynamic>> result = (rawData as List)
+          .map((item) => Map<String, dynamic>.from(item))
+          .toList();
 
-      List<ProductEntity> products = result.map((e) => ProductModel.fromJson(e).toEntity()).toList();
+      List<ProductEntity> products =
+          result.map((e) => ProductModel.fromJson(e).toEntity()).toList();
 
       return Right(products);
     } catch (e) {

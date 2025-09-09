@@ -25,7 +25,10 @@ class CartViewBody extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  buildAppBar(context, title: 'المنتجات', showBackButton: false, showNotification: false),
+                  buildAppBar(context,
+                      title: 'المنتجات',
+                      showBackButton: false,
+                      showNotification: false),
                   SizedBox(height: 16),
                   CartHeader(),
                   SizedBox(height: 12),
@@ -33,11 +36,16 @@ class CartViewBody extends StatelessWidget {
               ),
             ),
             SliverToBoxAdapter(
-              child: context.read<CartCubit>().cartEntity.items.isNotEmpty ? CustomDivider() : SizedBox.shrink(),
+              child: context.read<CartCubit>().cartEntity.cartItems.isNotEmpty
+                  ? CustomDivider()
+                  : SizedBox.shrink(),
             ),
-            CartItemList(cartItems: context.watch<CartCubit>().cartEntity.items),
+            CartItemList(
+                cartItems: context.watch<CartCubit>().cartEntity.cartItems),
             SliverToBoxAdapter(
-              child: context.read<CartCubit>().cartEntity.items.isNotEmpty ? CustomDivider() : SizedBox.shrink(),
+              child: context.read<CartCubit>().cartEntity.cartItems.isNotEmpty
+                  ? CustomDivider()
+                  : SizedBox.shrink(),
             ),
           ],
           // Products GridView

@@ -16,7 +16,8 @@ class FirebaseAuthService {
   }) async {
     // Implementation for creating a user with email and password using Firebase
     try {
-      final credential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: email,
         password: password,
       );
@@ -40,7 +41,8 @@ class FirebaseAuthService {
     }
   }
 
-  Future<User> signInWithEmailAndPassword({required String email, required String password}) async {
+  Future<User> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
     // Implementation for signing in a user with email and password using Firebase
     try {
       final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
@@ -50,7 +52,9 @@ class FirebaseAuthService {
       return credential.user!;
     } on FirebaseAuthException catch (e) {
       log('Exception in signInWithEmailAndPassword: ${e.code} - ${e.message},and code = ${e.code}');
-      if (e.code == 'wrong-password' || e.code == 'user-not-found' || e.code == 'invalid-credential') {
+      if (e.code == 'wrong-password' ||
+          e.code == 'user-not-found' ||
+          e.code == 'invalid-credential') {
         throw CustomException('البريد الالكتروني او الباسورد غير صحيح.');
       } else if (e.code == 'network-request-failed') {
         throw CustomException('لا يوجد اتصال بالانترنت.');
@@ -68,7 +72,8 @@ class FirebaseAuthService {
   Future<User> signInWithGoogle() async {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     final credential = GoogleAuthProvider.credential(
       accessToken: googleAuth?.accessToken,
@@ -83,10 +88,13 @@ class FirebaseAuthService {
     final LoginResult loginResult = await FacebookAuth.instance.login();
 
     // Create a credential from the access token
-    final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
+    final OAuthCredential facebookAuthCredential =
+        FacebookAuthProvider.credential(loginResult.accessToken!.tokenString);
 
     // Once signed in, return the UserCredential
-    return (await FirebaseAuth.instance.signInWithCredential(facebookAuthCredential)).user!;
+    return (await FirebaseAuth.instance
+            .signInWithCredential(facebookAuthCredential))
+        .user!;
   }
 }
 

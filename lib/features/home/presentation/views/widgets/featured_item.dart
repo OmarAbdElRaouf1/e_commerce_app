@@ -65,10 +65,7 @@ class _FeaturedItemContent extends StatelessWidget {
                   placeholderBuilder: (context) => Container(
                     decoration: const BoxDecoration(
                       gradient: LinearGradient(
-                        colors: [
-                          Colors.orange,
-                          Colors.deepOrange
-                        ],
+                        colors: [Colors.orange, Colors.deepOrange],
                         begin: Alignment.topLeft,
                         end: Alignment.bottomRight,
                       ),

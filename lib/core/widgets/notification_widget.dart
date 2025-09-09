@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class NotificationWidget extends StatelessWidget {
   const NotificationWidget({
     super.key,
@@ -15,7 +14,8 @@ class NotificationWidget extends StatelessWidget {
         shape: OvalBorder(),
       ),
       child: IconButton(
-        icon: const Icon(Icons.notifications, color: Color(0xFF4CAF50) /* green-500 */, size: 24),
+        icon: const Icon(Icons.notifications,
+            color: Color(0xFF4CAF50) /* green-500 */, size: 24),
         onPressed: () {},
       ),
     );

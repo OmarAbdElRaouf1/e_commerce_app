@@ -19,10 +19,12 @@ class AuthRepoImplementation implements AuthRepo {
   final DatabaseService databaseService;
   final FirebaseAuthService firebaseAuthService;
 
-  AuthRepoImplementation({required this.firebaseAuthService, required this.databaseService});
+  AuthRepoImplementation(
+      {required this.firebaseAuthService, required this.databaseService});
 
   @override
-  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(String email, String password, String name) async {
+  Future<Either<Failure, UserEntity>> createUserWithEmailAndPassword(
+      String email, String password, String name) async {
     User? user;
     try {
       user = await firebaseAuthService.createUserWithEmailAndPassword(
@@ -51,7 +53,8 @@ class AuthRepoImplementation implements AuthRepo {
   }
 
   @override
-  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(String email, String password) async {
+  Future<Either<Failure, UserEntity>> signInWithEmailAndPassword(
+      String email, String password) async {
     try {
       var user = await firebaseAuthService.signInWithEmailAndPassword(
         email: email,
@@ -76,7 +79,8 @@ class AuthRepoImplementation implements AuthRepo {
     try {
       user = await firebaseAuthService.signInWithGoogle();
       UserEntity userEntity = UserModel.fromFirebaseUser(user);
-      var isUserExist = await databaseService.isUserExist(path: BackendEndpoints.isUserExist, docId: user.uid);
+      var isUserExist = await databaseService.isUserExist(
+          path: BackendEndpoints.isUserExist, docId: user.uid);
       if (isUserExist) {
         var userData = await getUserData(userId: user.uid);
         userEntity = userData;
@@ -98,7 +102,8 @@ class AuthRepoImplementation implements AuthRepo {
     try {
       user = await firebaseAuthService.signInWithFacebook();
       UserEntity userEntity = UserModel.fromFirebaseUser(user);
-      var isUserExist = await databaseService.isUserExist(path: BackendEndpoints.isUserExist, docId: user.uid);
+      var isUserExist = await databaseService.isUserExist(
+          path: BackendEndpoints.isUserExist, docId: user.uid);
       if (isUserExist) {
         var userData = await getUserData(userId: user.uid);
         userEntity = userData;

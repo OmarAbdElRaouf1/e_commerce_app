@@ -33,13 +33,18 @@ class _ProductsViewBodyState extends State<ProductsViewBody> {
                 SizedBox(
                   height: 20,
                 ),
-                buildAppBar(context, title: 'المنتجات', showBackButton: false, showNotification: true, onBackPressed: () {
+                buildAppBar(context,
+                    title: 'المنتجات',
+                    showBackButton: false,
+                    showNotification: true, onBackPressed: () {
                   Navigator.pushNamed(context, MainView.routeName);
                 }),
                 SizedBox(height: 16),
                 SearchTextField(),
                 SizedBox(height: 12),
-                ProductsHeader(productsLenght: context.watch<ProductsCubit>().productsLength),
+                ProductsHeader(
+                    productsLenght:
+                        context.watch<ProductsCubit>().productsLength),
                 SizedBox(height: 12),
               ],
             ),

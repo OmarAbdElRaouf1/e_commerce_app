@@ -83,5 +83,4 @@ class DefaultFirebaseOptions {
     authDomain: 'fruits-store-app-f5d8b.firebaseapp.com',
     storageBucket: 'fruits-store-app-f5d8b.firebasestorage.app',
   );
-
 }

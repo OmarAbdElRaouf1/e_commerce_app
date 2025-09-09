@@ -48,7 +48,9 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
           position: 0,
           decorator: DotsDecorator(
             activeColor: AppColors.primary,
-            color: currentPage == 1 ? AppColors.primary : AppColors.primary.withOpacity(.5),
+            color: currentPage == 1
+                ? AppColors.primary
+                : AppColors.primary.withOpacity(.5),
           ),
         ),
         const SizedBox(
@@ -66,7 +68,8 @@ class _OnBoardingViewBodyState extends State<OnBoardingViewBody> {
             child: CustomButton(
                 onPressed: () {
                   Prefs.setBool(kIsOnBoardingViewSeen, true);
-                  Navigator.of(context).pushReplacementNamed(SigninView.routeName);
+                  Navigator.of(context)
+                      .pushReplacementNamed(SigninView.routeName);
                 },
                 text: "ابدأ الان"),
           ),

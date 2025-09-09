@@ -5,7 +5,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../../../../core/utils/app_colors.dart';
 
 class CustomCheckBox extends StatelessWidget {
-  const CustomCheckBox({super.key, required this.isChecked, required this.onChanged});
+  const CustomCheckBox(
+      {super.key, required this.isChecked, required this.onChanged});
   final bool isChecked;
   final ValueChanged<bool> onChanged;
 

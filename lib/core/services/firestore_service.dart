@@ -4,7 +4,10 @@ import 'package:e_commerce_app/core/services/database_service.dart';
 class FirestoreService implements DatabaseService {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
   @override
-  Future<void> add({required String path, required Map<String, dynamic> data, String? docId}) async {
+  Future<void> add(
+      {required String path,
+      required Map<String, dynamic> data,
+      String? docId}) async {
     if (docId != null) {
       await firestore.collection(path).doc(docId).set(data);
     } else {
@@ -13,7 +16,10 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<dynamic> getData({required String path, String? docId, Map<String, dynamic>? query}) async {
+  Future<dynamic> getData(
+      {required String path,
+      String? docId,
+      Map<String, dynamic>? query}) async {
     if (docId != null) {
       var data = await firestore.collection(path).doc(docId).get();
       return data.data();
@@ -36,7 +42,8 @@ class FirestoreService implements DatabaseService {
   }
 
   @override
-  Future<bool> isUserExist({required String path, required String docId}) async {
+  Future<bool> isUserExist(
+      {required String path, required String docId}) async {
     var data = await firestore.collection(path).doc(docId).get();
     return data.exists;
   }

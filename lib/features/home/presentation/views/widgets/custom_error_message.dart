@@ -15,7 +15,9 @@ class CustomErrorMessage extends StatelessWidget {
       actions: [
         TextButton(
           onPressed: () {
-            context.read<ProductsCubit>().getBestSellingProducts(); // Retry fetching products
+            context
+                .read<ProductsCubit>()
+                .getBestSellingProducts(); // Retry fetching products
           },
           child: Text('OK'),
         ),

@@ -60,7 +60,8 @@ class _HomeViewBodyState extends State<HomeViewBody> {
             padding: EdgeInsets.symmetric(horizontal: 8),
             child: BestSellingHeader(
               onMoreTap: () {
-                final mainViewState = context.findAncestorStateOfType<MainViewState>();
+                final mainViewState =
+                    context.findAncestorStateOfType<MainViewState>();
                 if (mainViewState != null) {
                   mainViewState.navigateToTab(1);
                 }

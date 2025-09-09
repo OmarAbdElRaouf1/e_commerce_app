@@ -34,10 +34,11 @@ class MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: MainViewBodyBlocConsumer(selectedIndex: _selectedIndex, pages: _pages),
+        child: MainViewBodyBlocConsumer(
+            selectedIndex: _selectedIndex, pages: _pages),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 16),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
         child: Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(100)),
@@ -46,7 +47,7 @@ class MainViewState extends State<MainView> {
           child: Padding(
             padding: EdgeInsets.symmetric(
               horizontal: MediaQuery.of(context).size.width * 0.005,
-              vertical: 10,
+              vertical: MediaQuery.of(context).size.height * 0.001,
             ),
             child: GNav(
               tabBackgroundGradient: LinearGradient(

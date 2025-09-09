@@ -22,7 +22,10 @@ class FeaturedItemButton extends StatelessWidget {
         onPressed: onPressed,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: FittedBox(child: Text(' تسوق الان', style: AppTextStyles.bold16.copyWith(color: AppColors.primary))),
+          child: FittedBox(
+              child: Text(' تسوق الان',
+                  style:
+                      AppTextStyles.bold16.copyWith(color: AppColors.primary))),
         ),
       ),
     );

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'location_summry.dart';
 
 class PaymentSection extends StatelessWidget {
-  const PaymentSection({super.key});
-
+  const PaymentSection({super.key, required this.pageController});
+  final PageController pageController;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -13,7 +13,7 @@ class PaymentSection extends StatelessWidget {
         SizedBox(height: 24),
         OrderSummryWidget(),
         SizedBox(height: 16),
-        LocationSummry(),
+        LocationSummry(pageController: pageController),
       ],
     );
   }

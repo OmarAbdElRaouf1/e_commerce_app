@@ -47,7 +47,8 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
                 ),
                 TextSpan(
                   text: ' ',
-                  style: AppTextStyles.bold13.copyWith(color: AppColors.primary),
+                  style:
+                      AppTextStyles.bold13.copyWith(color: AppColors.primary),
                 ),
                 TextSpan(
                   text: 'الخاصة',

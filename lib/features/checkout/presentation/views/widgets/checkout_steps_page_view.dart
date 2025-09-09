@@ -35,7 +35,9 @@ class CheckoutStepsPageView extends StatelessWidget {
         valueNotifier: valueNotifier,
         formKey: formKey,
       ),
-      PaymentSection(),
+      PaymentSection(
+        pageController: pageController,
+      ),
     ];
   }
 }

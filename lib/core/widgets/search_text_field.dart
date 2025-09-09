@@ -35,7 +35,10 @@ class SearchTextField extends StatelessWidget {
               ),
             ),
           ),
-          prefixIcon: SizedBox(width: 20, child: Center(child: Image.asset(Assets.imagesSearchNormal))), // search()
+          prefixIcon: SizedBox(
+              width: 20,
+              child: Center(
+                  child: Image.asset(Assets.imagesSearchNormal))), // search()
           hintText: 'ابحث عن ... ',
           hintStyle: AppTextStyles.regular14.copyWith(
             color: const Color(0xFFB0B3B3), // gray-400

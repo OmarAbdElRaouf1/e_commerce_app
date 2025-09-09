@@ -12,6 +12,4 @@ class ReviewEntity {
     required this.date,
     required this.reviewDescription,
   });
-
-  
 }

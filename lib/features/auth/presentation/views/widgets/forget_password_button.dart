@@ -20,10 +20,13 @@ class ForgotPasswordviewBodyState extends State<ForgotPasswordviewBody> {
     if (_formKey.currentState!.validate()) {
       try {
         print('Sending reset link to ${emailController.text}');
-        await FirebaseAuth.instance.sendPasswordResetEmail(email: emailController.text.trim());
+        await FirebaseAuth.instance
+            .sendPasswordResetEmail(email: emailController.text.trim());
         print('Reset link sent');
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني')),
+          SnackBar(
+              content: Text(
+                  'تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني')),
         );
         Navigator.pop(context); // يرجع لشاشة تسجيل الدخول
       } on FirebaseAuthException catch (e) {

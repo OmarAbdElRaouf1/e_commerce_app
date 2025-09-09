@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/services/getit_service.dart';
-import 'package:e_commerce_app/features/auth/domain/repos/auth_repo.dart' show AuthRepo;
+import 'package:e_commerce_app/features/auth/domain/repos/auth_repo.dart'
+    show AuthRepo;
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

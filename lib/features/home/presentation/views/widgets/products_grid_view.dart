@@ -15,6 +15,7 @@ class ProductsGridView extends StatelessWidget {
         crossAxisCount: 2,
         childAspectRatio: 163 / 214,
         crossAxisSpacing: 10.0,
+        mainAxisSpacing: 10,
       ),
       itemBuilder: (BuildContext context, int index) {
         return FruitItem(productEntity: products[index]);

@@ -1,4 +1,4 @@
-import 'package:e_commerce_app/features/checkout/presentation/views/domain/entities/order_entity.dart';
+import 'package:e_commerce_app/features/checkout/domain/entities/order_entity.dart';
 import 'package:e_commerce_app/features/checkout/presentation/views/widgets/shipping_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,7 +10,8 @@ class ShippingSection extends StatefulWidget {
   State<ShippingSection> createState() => _ShippingSectionState();
 }
 
-class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAliveClientMixin {
+class _ShippingSectionState extends State<ShippingSection>
+    with AutomaticKeepAliveClientMixin {
   int selectedIndex = -1;
 
   @override
@@ -31,7 +32,8 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
           isSelected: selectedIndex == 0,
           title: 'الدفع عند الاستلام',
           subTitle: 'التسليم من المكان',
-          price: '${(orderEntity.cartEntity.calculateTotalPrice() + 40).toString()} جنيه',
+          price:
+              '${(orderEntity.cartEntity.calculateTotalPrice() + 30).toString()} جنيه',
         ),
         SizedBox(
           height: 20,
@@ -45,7 +47,8 @@ class _ShippingSectionState extends State<ShippingSection> with AutomaticKeepAli
           isSelected: selectedIndex == 1,
           title: '  الدفع اونلاين',
           subTitle: 'يرجي تحديد طريقه الدفع',
-          price: '${orderEntity.cartEntity.calculateTotalPrice().toString()} جنيه',
+          price:
+              '${orderEntity.cartEntity.calculateTotalPrice().toString()} جنيه',
         ),
       ],
     );

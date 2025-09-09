@@ -15,7 +15,7 @@ class CustomCartButton extends StatelessWidget {
       builder: (context, state) {
         return CustomButton(
           onPressed: () {
-            if (context.read<CartCubit>().cartEntity.items.isNotEmpty) {
+            if (context.read<CartCubit>().cartEntity.cartItems.isNotEmpty) {
               Navigator.pushNamed(
                 context,
                 CheckoutView.routeName,
@@ -25,7 +25,8 @@ class CustomCartButton extends StatelessWidget {
               buildErrorBar(context, 'سلة التسوق فارغة');
             }
           },
-          text: 'الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه',
+          text:
+              'الدفع ${context.watch<CartCubit>().cartEntity.calculateTotalPrice()} جنيه',
         );
       },
     );

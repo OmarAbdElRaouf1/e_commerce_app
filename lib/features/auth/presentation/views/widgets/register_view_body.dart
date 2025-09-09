@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/core/widgets/custom_app_bar.dart';
-import 'package:e_commerce_app/features/auth/presentation/manager/cubits/signup_cubits/signup_cubit.dart' show SignupCubit;
+import 'package:e_commerce_app/features/auth/presentation/manager/cubits/signup_cubits/signup_cubit.dart'
+    show SignupCubit;
 import 'package:e_commerce_app/features/auth/presentation/views/widgets/have_an_account.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,7 +68,9 @@ class _RegisterViewBodyState extends State<RegisterViewBody> {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
                     if (isTermsAccepted) {
-                      context.read<SignupCubit>().createUserWithEmailAndPassword(
+                      context
+                          .read<SignupCubit>()
+                          .createUserWithEmailAndPassword(
                             email,
                             password,
                             name,

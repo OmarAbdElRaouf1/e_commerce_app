@@ -40,7 +40,8 @@ class LoginViewBody extends StatelessWidget {
               children: [
                 Text(
                   'هل نسيت كلمة المرور؟',
-                  style: AppTextStyles.bold13.copyWith(color: AppColors.lightPrimary),
+                  style: AppTextStyles.bold13
+                      .copyWith(color: AppColors.lightPrimary),
                 ),
               ],
             ),

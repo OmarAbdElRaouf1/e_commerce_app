@@ -1,4 +1,5 @@
-import 'package:e_commerce_app/core/utils/app_text_styles.dart' show AppTextStyles;
+import 'package:e_commerce_app/core/utils/app_text_styles.dart'
+    show AppTextStyles;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 

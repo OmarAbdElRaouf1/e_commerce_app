@@ -16,7 +16,7 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.add,
           color: AppColors.primary,
           onPressed: () {
-            cartItemEntity.increaseCount();
+            cartItemEntity.increaseQuantity();
             context.read<CartItemCubit>().updateCartItem(cartItemEntity);
           },
           iconColor: Colors.white,
@@ -24,7 +24,7 @@ class CartItemActionButtons extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Text(
-            '${cartItemEntity.count}',
+            '${cartItemEntity.quantity}',
             textAlign: TextAlign.center,
             style: TextStyle(
               color: const Color(0xFF06140C) /* Green1-950 */,
@@ -38,7 +38,7 @@ class CartItemActionButtons extends StatelessWidget {
           icon: Icons.remove,
           color: Color(0xFFF3F5F7),
           onPressed: () {
-            cartItemEntity.decreaseCount();
+            cartItemEntity.decreaseQuantity();
             context.read<CartItemCubit>().updateCartItem(cartItemEntity);
           },
           iconColor: Colors.grey,
@@ -54,7 +54,12 @@ class CartItemActionButton extends StatelessWidget {
   final Color color;
   final Color iconColor;
 
-  const CartItemActionButton({super.key, required this.icon, required this.onPressed, required this.color, required this.iconColor});
+  const CartItemActionButton(
+      {super.key,
+      required this.icon,
+      required this.onPressed,
+      required this.color,
+      required this.iconColor});
 
   @override
   Widget build(BuildContext context) {
