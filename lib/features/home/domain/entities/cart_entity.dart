@@ -14,8 +14,8 @@ class CartEntity {
     cartItems.remove(cartItem);
   }
 
-  num calculateTotalPrice() {
-    num total = 0;
+  int calculateTotalPrice() {
+    int total = 0;
     for (var item in cartItems) {
       total += item.calculateTotalPrice;
     }

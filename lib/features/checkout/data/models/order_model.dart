@@ -1,4 +1,3 @@
-import 'package:dartz/dartz.dart';
 import 'package:e_commerce_app/features/checkout/data/models/order_product_model.dart';
 import 'package:e_commerce_app/features/checkout/data/models/shipping_address_model.dart';
 import 'package:e_commerce_app/features/checkout/domain/entities/order_entity.dart';
@@ -22,15 +21,12 @@ class OrderModel {
     return OrderModel(
       totalPrice: entity.cartEntity.calculateTotalPrice(),
       uid: entity.uid,
-      shippingAddressModel:
-          ShippingAddressModel.fromEntity(entity.shippingAddressEntity),
-      orderProducts: entity.cartEntity.cartItems
-          .map((e) => OrderProductModel.fromEntity(entity: e))
-          .toList(),
+      shippingAddressModel: ShippingAddressModel.fromEntity(entity.shippingAddressEntity),
+      orderProducts: entity.cartEntity.cartItems.map((e) => OrderProductModel.fromEntity(entity: e)).toList(),
       paymentMethod: entity.payWithCash! ? 'Cash on Delivery' : 'Credit Card',
     );
   }
-  toJson() {
+  Map<String, Object> toJson() {
     return {
       'totalPrice': totalPrice,
       'uid': uid,

@@ -1,5 +1,4 @@
 import 'package:e_commerce_app/features/checkout/domain/entities/shipping_address_entity.dart';
-
 import 'package:e_commerce_app/features/home/domain/entities/cart_entity.dart';
 
 class OrderEntity {
@@ -13,7 +12,7 @@ class OrderEntity {
     this.payWithCash,
     required this.uid,
   });
-  num calculateShippingCost() {
+  int calculateShippingCost() {
     if (payWithCash!) {
       return 30;
     } else {
@@ -21,15 +20,13 @@ class OrderEntity {
     }
   }
 
-  num calculateShippingDiscount() {
-    return 0;
+  int calculateShippingDiscount() {
+    return 30 - calculateShippingCost();
   }
 
-  num calculateTotalPriceAfterDiscount() {
-    return cartEntity.calculateTotalPrice() + calculateShippingCost() - calculateShippingDiscount();
-  }
-
-  String getCurrency() {
-    return 'EG';
+  int calculateTotalPriceAfterDiscount() {
+    return cartEntity.calculateTotalPrice() +
+        calculateShippingCost() -
+        calculateShippingDiscount();
   }
 }

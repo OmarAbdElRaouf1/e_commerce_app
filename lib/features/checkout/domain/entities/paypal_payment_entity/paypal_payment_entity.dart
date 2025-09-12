@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/features/checkout/domain/entities/order_entity.dart';
+
 import 'amount.dart';
 import 'item_list.dart';
 
@@ -8,11 +10,16 @@ class PaypalPaymentEntity {
 
   PaypalPaymentEntity({this.amount, this.description, this.itemList});
 
-  factory PaypalPaymentEntity.fromEntity(PaypalPaymentEntity entity) {
+  factory PaypalPaymentEntity.fromEntity(OrderEntity entity) {
     return PaypalPaymentEntity(
-      amount: entity.amount,
-      description: entity.description,
-      itemList: entity.itemList,
+      amount: Amount.fromEntity(entity),
+      description: 'The payment transaction description.',
+      itemList: ItemList.fromEntity(cartItems: entity.cartEntity.cartItems),
     );
   }
+  Map<String, dynamic> toJson() => {
+        'amount': amount?.toJson(),
+        'description': description,
+        'item_list': itemList?.toJson(),
+      };
 }

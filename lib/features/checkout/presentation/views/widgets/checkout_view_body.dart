@@ -1,13 +1,16 @@
+import 'dart:developer';
+
 import 'package:e_commerce_app/core/helper%20functions/build_error_bar.dart';
+import 'package:e_commerce_app/core/utils/app_keys.dart';
 import 'package:e_commerce_app/core/widgets/custom_button.dart';
 import 'package:e_commerce_app/features/checkout/domain/entities/order_entity.dart';
+import 'package:e_commerce_app/features/checkout/domain/entities/paypal_payment_entity/paypal_payment_entity.dart';
 import 'package:e_commerce_app/features/checkout/presentation/views/widgets/checkout_steps.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_paypal_payment/flutter_paypal_payment.dart';
 
 import '../../../../../core/helper functions/build_appbar.dart';
-import '../../manger/add_order_cubit/add_order_cubit.dart';
 import 'checkout_steps_page_view.dart';
 
 class CheckoutViewBody extends StatefulWidget {
@@ -124,51 +127,24 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   }
 
   void processPayment(BuildContext context) {
+    var orderEntity = context.read<OrderEntity>();
+    PaypalPaymentEntity paypalPaymentEntity =
+        PaypalPaymentEntity.fromEntity(orderEntity);
+    log(paypalPaymentEntity.toJson().toString());
     Navigator.of(context).push(MaterialPageRoute(
       builder: (BuildContext context) => PaypalCheckoutView(
         sandboxMode: true,
-        clientId: "",
-        secretKey: "",
-        transactions: const [
-          {
-            "amount": {
-              "total": '70',
-              "currency": "USD",
-              "details": {
-                "subtotal": '70',
-                "shipping": '0',
-                "shipping_discount": 0
-              }
-            },
-            "description": "The payment transaction description.",
-            // "payment_options": {
-            //   "allowed_payment_method":
-            //       "INSTANT_FUNDING_SOURCE"
-            // },
-            "item_list": {
-              "items": [
-                {
-                  "name": "Apple",
-                  "quantity": 4,
-                  "price": '5',
-                  "currency": "USD"
-                },
-                {
-                  "name": "Pineapple",
-                  "quantity": 5,
-                  "price": '10',
-                  "currency": "USD"
-                }
-              ],
-            }
-          }
+        clientId: kPaypalSecretKey,
+        secretKey: kPaypalClientId,
+        transactions: [
+          paypalPaymentEntity.toJson(),
         ],
         note: "Contact us for any questions on your order.",
         onSuccess: (Map params) async {
           print("onSuccess: $params");
         },
         onError: (error) {
-          print("onError: $error");
+          log("onError: $error");
           Navigator.pop(context);
         },
         onCancel: () {

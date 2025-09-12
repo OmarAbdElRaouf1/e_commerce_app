@@ -7,7 +7,7 @@ class ProductModel {
   final String name;
   final String code;
   final String description;
-  final num price;
+  final int price;
 
   final bool isFeatured;
   String? imageUrl;
@@ -52,8 +52,7 @@ class ProductModel {
       reviews: json['review'] != null
           ? (json['review'] as List<dynamic>)
               .map(
-                (review) => ReviewModel.fromJson(review as Map<String, dynamic>)
-                    as ReviewEntity,
+                (review) => ReviewModel.fromJson(review as Map<String, dynamic>) as ReviewEntity,
               )
               .toList()
           : <ReviewEntity>[],

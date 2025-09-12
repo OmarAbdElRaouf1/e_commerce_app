@@ -23,7 +23,7 @@ class OrderProductModel {
       price: entity.quantity,
     );
   }
-  ToJson() {
+  Map<String, Object> ToJson() {
     return {
       'name': name,
       'code': code,
