@@ -1,6 +1,5 @@
 import 'package:e_commerce_app/features/auth/presentation/views/signin_view.dart';
-import 'package:e_commerce_app/features/auth/presentation/views/widgets/forget_password_button.dart'
-    show ForgotPasswordviewBody;
+import 'package:e_commerce_app/features/auth/presentation/views/widgets/forget_password_button.dart' show ForgotPasswordviewBody;
 import 'package:e_commerce_app/features/checkout/presentation/views/checkout_view.dart';
 import 'package:e_commerce_app/features/home/domain/entities/cart_entity.dart';
 import 'package:e_commerce_app/features/home/presentation/views/Pages/home_view.dart';
@@ -19,10 +18,7 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
     case SplashView.routeName:
       return MaterialPageRoute(builder: (_) => const SplashView());
     case CheckoutView.routeName:
-      return MaterialPageRoute(
-          builder: (_) => CheckoutView(
-                cartEntity: settings.arguments as CartEntity,
-              ));
+      return MaterialPageRoute(builder: (_) => CheckoutView(cartEntity: settings.arguments as CartEntity));
     case MainView.routeName:
       return MaterialPageRoute(builder: (_) => const MainView());
     case HomeView.routeName:
@@ -33,12 +29,10 @@ Route<dynamic> onGenerateRoutes(RouteSettings settings) {
       return MaterialPageRoute(builder: (_) => const CartView());
     case ProfileView.routeName:
       return MaterialPageRoute(builder: (_) => const ProfileView());
-
     case OnBoardingView.routeName:
       return MaterialPageRoute(builder: (_) => const OnBoardingView());
     case ForgotPasswordviewBody.routeName:
       return MaterialPageRoute(builder: (_) => ForgotPasswordviewBody());
-
     case SigninView.routeName:
       return MaterialPageRoute(builder: (_) => const SigninView());
     case SignupView.routeName:

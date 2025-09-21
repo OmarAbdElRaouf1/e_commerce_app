@@ -1,4 +1,4 @@
 const kPaypalSecretKey =
-    'AaxyV2gjlf7WbXR7qf8ldZHDH8qPoZbbFG2xWQ8f4yv1vFwvfMp_O7uK80_a5nNQ9Mg2XLotyRgDraHO';
+    'AfoAHcyv20XvcjeAq9hLdpQk8cJzvpjDnvMpFnYobeNOtF4XdSTFJMbjxbcgNzHxZBktwSRTr3-fJqC3';
 const kPaypalClientId =
-    'EIx6K4vBDZBDRdihAR5bkuiS8McNZwgUjUoaY0sGz4Rt1OgJ13QYxaYfAlZTlhv7yXz5FwIuRXZJb5zk';
+    'EDDkXsHScmJDVTFDqjwMKlAKUx0pSXtTxX6WZs5bo_904GcJRpduuMF6iB-WP1aCYY6T3WG4hDc8z0Dy';
