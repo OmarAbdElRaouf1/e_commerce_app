@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/features/home/presentation/views/widgets/profile_view_body.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
@@ -6,6 +7,9 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return SafeArea(
+        child: Scaffold(
+      body: const ProfileViewBody(),
+    ));
   }
 }

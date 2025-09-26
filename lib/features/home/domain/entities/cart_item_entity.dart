@@ -7,16 +7,20 @@ class CartItemEntity extends Equatable {
 
   CartItemEntity({
     required this.productEntity,
-    this.quantity = 0,
+    this.quantity = 1, // يبدأ من 1 بدل 0
   });
+
   int get calculateTotalPrice => productEntity.price * quantity;
   num calculateTotalWeight() => productEntity.unitAmount * quantity;
+
   void increaseQuantity() => quantity++;
-  void decreaseQuantity() => quantity--;
+
+  void decreaseQuantity() {
+    if (quantity > 1) {
+      quantity--;
+    }
+  }
 
   @override
-  // TODO: implement props
-  List<Object?> get props => [
-        productEntity,
-      ];
+  List<Object?> get props => [productEntity];
 }

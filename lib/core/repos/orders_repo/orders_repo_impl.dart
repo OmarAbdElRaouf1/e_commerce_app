@@ -9,9 +9,12 @@ class OrdersRepoImpl implements OrdersRepo {
   final DatabaseService firestoreService;
   OrdersRepoImpl(this.firestoreService);
   @override
-  Future<Either<Failure, void>> addOrder({required OrderEntity orderEntity}) async {
+  Future<Either<Failure, void>> addOrder(
+      {required OrderEntity orderEntity}) async {
     try {
-      await firestoreService.add(path: 'orders', data: OrderModel.fromEntity(orderEntity).toJson());
+      var order = OrderModel.fromEntity(orderEntity);
+      await firestoreService.add(
+          path: 'orders', docId: order.orderId, data: order.toJson());
       return const Right(null);
     } catch (e) {
       return Left(ServerFailure(e.toString()));

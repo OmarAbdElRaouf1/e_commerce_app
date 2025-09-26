@@ -25,7 +25,7 @@ class LocationSummry extends StatelessWidget {
               SvgPicture.asset(Assets.imagesLocation),
               SizedBox(width: 8),
               Text(
-                '${context.read<OrderEntity>().shippingAddressEntity}',
+                context.read<OrderEntity>().shippingAddressEntity.toString(),
                 style: AppTextStyles.normal14.copyWith(
                   color: const Color(0xFF0C0D0D),
                 ),

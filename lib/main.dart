@@ -44,30 +44,49 @@ void main() async {
   ));
 }
 
-class FruitHub extends StatelessWidget {
-  const FruitHub({
-    super.key,
-  });
+class FruitHub extends StatefulWidget {
+  const FruitHub({super.key});
 
   @override
-  Widget build(
-    BuildContext context,
-  ) {
+  State<FruitHub> createState() => FruitHubState();
+}
+
+class FruitHubState extends State<FruitHub> {
+  bool isDark = false;
+
+  @override
+  void initState() {
+    super.initState();
+    isDark = Prefs.getBool("isDark") ?? false;
+  }
+
+  void toggleTheme(bool value) {
+    setState(() => isDark = value);
+    Prefs.setBool("isDark", value);
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
         colorSchemeSeed: AppColors.primary,
         fontFamily: 'Cairo',
+        brightness: Brightness.light,
       ),
-      localizationsDelegates: [
+      darkTheme: ThemeData(
+        colorSchemeSeed: AppColors.primary,
+        fontFamily: 'Cairo',
+        brightness: Brightness.dark,
+      ),
+      themeMode: isDark ? ThemeMode.dark : ThemeMode.light,
+      localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: S.delegate.supportedLocales,
-      locale: const Locale(
-        'ar',
-      ),
+      locale: const Locale('ar'),
       debugShowCheckedModeBanner: false,
       onGenerateRoute: onGenerateRoutes,
       initialRoute: SplashView.routeName,

@@ -27,7 +27,7 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
     pageController = PageController();
     pageController.addListener(() {
       setState(() {
-        currentStep = pageController.page!.toInt();
+        currentStep = pageController.page!.round();
       });
     });
   }
@@ -45,56 +45,55 @@ class _CheckoutViewBodyState extends State<CheckoutViewBody> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(
-          context,
-          title: 'الشحن',
-          showNotification: false,
-          showBackButton: true,
-          onBackPressed: () {
-            if (pageController.page == 0) {
-              Navigator.pop(context);
-            } else {
-              pageController.previousPage(
-                  duration: Duration(milliseconds: 250),
-                  curve: Curves.easeInOut);
-            }
-          },
-        ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: Column(
-            children: [
-              SizedBox(height: 16),
-              CheckoutSteps(
+      appBar: buildAppBar(
+        context,
+        title: 'الشحن',
+        showNotification: false,
+        showBackButton: true,
+        onBackPressed: () {
+          if (pageController.page == 0) {
+            Navigator.pop(context);
+          } else {
+            pageController.previousPage(
+                duration: Duration(milliseconds: 250), curve: Curves.easeInOut);
+          }
+        },
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          children: [
+            SizedBox(height: 16),
+            CheckoutSteps(
+              pageController: pageController,
+              currentStep: currentStep,
+            ),
+            SizedBox(height: 16),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.6,
+              child: CheckoutStepsPageView(
+                valueNotifier: valueNotifier,
                 pageController: pageController,
-                currentStep: currentStep,
+                formKey: formKey,
               ),
-              SizedBox(height: 16),
-              Expanded(
-                child: CheckoutStepsPageView(
-                  valueNotifier: valueNotifier,
-                  pageController: pageController,
-                  formKey: formKey,
-                ),
-              ),
-              CustomButton(
-                onPressed: () {
-                  if (currentStep == 0) {
-                    handelShippingSectionValidation(context);
-                  } else if (currentStep == 1) {
-                    handelAddressValidation(context);
-                  } else {
-                    // var orderEntity = context.read<OrderEntity>();
-                    // context.read<AddOrderCubit>().addOrder(orderEntity: orderEntity);
-                    processPayment(context);
-                  }
-                },
-                text: currentStep == 2 ? 'الدفع عبر PayPal' : 'التالي',
-              ),
-              SizedBox(height: 40),
-            ],
-          ),
-        ));
+            ),
+            CustomButton(
+              onPressed: () {
+                if (currentStep == 0) {
+                  handelShippingSectionValidation(context);
+                } else if (currentStep == 1) {
+                  handelAddressValidation(context);
+                } else {
+                  processPayment(context);
+                }
+              },
+              text: currentStep == 2 ? 'الدفع عبر PayPal' : 'التالي',
+            ),
+            SizedBox(height: 40),
+          ],
+        ),
+      ),
+    );
   }
 
   void handelShippingSectionValidation(BuildContext context) {
